@@ -60,16 +60,17 @@ namespace Data_1.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Year")] Movie movie)
+        public ActionResult Create([Bind(Include = "Movie")] CreateOrEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
+                db.Movies.Add(viewModel.Movie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            viewModel.Genres = GetGenres();
 
-            return View(movie);
+            return View(viewModel);
         }
 
         // GET: Movies/Edit/5
