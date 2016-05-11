@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Data_1.Models;
+using Data_1.Migrations;
 
 namespace Data_1
 {
@@ -16,6 +19,10 @@ namespace Data_1
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MovieContext, Configuration>());
+
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MovieContext>());
         }
     }
 }
