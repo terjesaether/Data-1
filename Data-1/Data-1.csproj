@@ -178,6 +178,14 @@
     <Compile Include="Migrations\201605111735568_Inital.Designer.cs">
       <DependentUpon>201605111735568_Inital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605161902114_Added Movie.GenreId.cs" />
+    <Compile Include="Migrations\201605161902114_Added Movie.GenreId.Designer.cs">
+      <DependentUpon>201605161902114_Added Movie.GenreId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605161906005_Added Movie.GenreId constraint.cs" />
+    <Compile Include="Migrations\201605161906005_Added Movie.GenreId constraint.Designer.cs">
+      <DependentUpon>201605161906005_Added Movie.GenreId constraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateOrEditViewModel.cs" />
@@ -264,6 +272,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605111735568_Inital.resx">
       <DependentUpon>201605111735568_Inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161902114_Added Movie.GenreId.resx">
+      <DependentUpon>201605161902114_Added Movie.GenreId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161906005_Added Movie.GenreId constraint.resx">
+      <DependentUpon>201605161906005_Added Movie.GenreId constraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

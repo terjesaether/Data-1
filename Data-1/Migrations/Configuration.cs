@@ -32,7 +32,7 @@ namespace Data_1.Migrations
                 new Genre { Name = "Action"},
                 new Genre { Name = "Drama"},
                 new Genre { Name = "Sci-Fi"},
-                new Genre { Name = "Action"}
+                new Genre { Name = "Fantasy"}
                     );
 
         }
