@@ -27,13 +27,23 @@ namespace Data_1.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var genres = Enum.GetValues(typeof(MovieGenre))
+                .Cast<MovieGenre>()
+                .Select(g => new Genre { Id = (int)g, Name = g.ToString() })
+                .ToArray();
+            
             context.Genres.AddOrUpdate(
-                g => g.Name,
-                new Genre { Name = "Action"},
-                new Genre { Name = "Drama"},
-                new Genre { Name = "Sci-Fi"},
-                new Genre { Name = "Fantasy"}
-                    );
+                g => g.Id,
+                genres);
+            context.SaveChanges(); 
+
+                // g => g.Name,
+                //new Genre { Name = "Action"},
+                //new Genre { Name = "Drama"},
+                //new Genre { Name = "Sci-Fi"},
+                //new Genre { Name = "Fantasy"}
+                //    );
 
         }
     }

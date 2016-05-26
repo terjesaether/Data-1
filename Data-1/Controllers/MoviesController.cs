@@ -17,6 +17,7 @@ namespace Data_1.Controllers
         // GET: Movies
         public ActionResult Index()
         {
+
             return View(db.Movies.ToList());
         }
 
@@ -85,7 +86,15 @@ namespace Data_1.Controllers
             {
                 return HttpNotFound();
             }
-            return View(movie);
+
+            var viewModel = new CreateOrEditViewModel // Nytt viewModel-objekt
+            { 
+                Movie = movie,
+                
+                Genres = GetGenres()
+            };
+
+            return View(viewModel);
         }
 
         // POST: Movies/Edit/5
@@ -93,15 +102,18 @@ namespace Data_1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Year")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Movie")] CreateOrEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
+                db.Entry(viewModel.Movie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+
+            viewModel.Genres = GetGenres();
+            
+            return View(viewModel);
         }
 
         // GET: Movies/Delete/5

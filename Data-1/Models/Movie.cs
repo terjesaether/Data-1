@@ -15,9 +15,22 @@ namespace Data_1.Models
 
         [Required] 
         [ForeignKey("Genre")]  // Setter hvor foreignkey'en hører til
+        [Range(1,int.MaxValue)]
         public int GenreId { get; set; }
+        
+        public virtual Genre _Genre { get; set; } // Virtual lager en lazy-join
 
-        [Required]
-        public Genre Genre { get; set; }
+        public MovieGenre Genre {
+            get
+            {
+                return (MovieGenre)GenreId;
+            }
+            set
+            {
+
+                GenreId = (int)value;
+            }
     }
+
+    
 }
